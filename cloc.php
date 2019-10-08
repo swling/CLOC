@@ -49,6 +49,12 @@ class CountCode {
 				continue;
 			}
 
+			// 排除图像
+			$extension = strtolower(substr(strrchr($fileName, '.'), 1));
+			if (in_array($extension, array('jpg', 'png', 'gif', 'jpeg', 'bmp'))) {
+				continue;
+			}
+
 			$fullFileName = $dirName . "/" . $fileName;
 			if (is_file($fullFileName)) {
 				$countCodeSub = $this->countByFile($dirName . "/" . $fileName);
